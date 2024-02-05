@@ -7,14 +7,18 @@ import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Card
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Favorite
 import androidx.compose.material3.Icon
@@ -125,9 +129,7 @@ fun ScreenOne() {
 
 @Composable
 fun ScreenTwo() {
-    Text("Экран 2", modifier = Modifier
-        .fillMaxSize()
-        .wrapContentSize())
+    NestedLists()
 }
 
 @Composable
@@ -135,4 +137,48 @@ fun ScreenThree() {
     Text("Экран 3", modifier = Modifier
         .fillMaxSize()
         .wrapContentSize())
+}
+
+
+@Composable
+fun NestedLists() {
+    LazyColumn(modifier = Modifier.fillMaxSize()) {
+        items(5) { verticalItem ->
+            Text(
+                text = "Вертикальный элемент $verticalItem",
+                style = MaterialTheme.typography.h6,
+                modifier = Modifier.padding(8.dp)
+            )
+            HorizontalList(horizontalListIndex = verticalItem)
+        }
+    }
+}
+
+@Composable
+fun HorizontalList(horizontalListIndex: Int) {
+    LazyRow(modifier = Modifier.height(200.dp)) {
+        items(10) { horizontalItem ->
+            Card(
+                modifier = Modifier
+                    .width(150.dp)
+                    .padding(8.dp),
+                elevation = 2.dp
+            ) {
+                VerticalListInsideHorizontal(horizontalListIndex, horizontalItem)
+            }
+        }
+    }
+}
+
+@Composable
+fun VerticalListInsideHorizontal(horizontalListIndex: Int, horizontalItem: Int) {
+    LazyColumn(modifier = Modifier.padding(8.dp)) {
+        items(3) { verticalItemInsideHorizontal ->
+            Text(
+                text = "Верт. элемент $verticalItemInsideHorizontal в Гориз. элементе $horizontalItem из Верт. списка $horizontalListIndex",
+                style = MaterialTheme.typography.body2,
+                modifier = Modifier.padding(4.dp)
+            )
+        }
+    }
 }
