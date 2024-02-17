@@ -3,7 +3,6 @@ plugins {
     kotlin("android")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
-    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -38,4 +37,7 @@ dependencies {
 
     implementation("com.google.dagger:hilt-android:2.50")
     ksp("com.google.dagger:hilt-compiler:2.50")
+
+    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.7.3")
+    testImplementation("junit:junit:4.13.2")
 }

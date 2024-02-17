@@ -5,12 +5,16 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import com.example.domain.INetworkStatusHelper
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import javax.inject.Inject
 
-class NetworkStatusHelper @Inject constructor(context: Context) {
+class NetworkStatusHelper @Inject constructor(
+    @ApplicationContext context: Context
+) : INetworkStatusHelper {
 
     private val connectivityManager =
         context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
@@ -39,6 +43,6 @@ class NetworkStatusHelper @Inject constructor(context: Context) {
         connectivityManager.registerNetworkCallback(networkRequest, networkCallback)
     }
 
-    fun observeNetworkStatus(): Flow<Boolean> = networkStatusFlow.asSharedFlow()
+    override fun observeNetworkStatus(): Flow<Boolean> = networkStatusFlow.asSharedFlow()
 
 }

@@ -1,13 +1,14 @@
 package com.example.data
 
+import com.example.domain.CharactersResponse
+import com.example.domain.IRickAndMortyAPI
 import io.ktor.client.HttpClient
 import io.ktor.client.request.get
 import io.ktor.client.request.parameter
-import kotlinx.serialization.Serializable
 
-class RickAndMortyAPI(private val client: HttpClient) {
+class RickAndMortyAPI(private val client: HttpClient) : IRickAndMortyAPI {
 
-    suspend fun getCharacters(page: Int): CharactersResponse {
+    override suspend fun getCharacters(page: Int): CharactersResponse {
         println("Fetching characters for page: $page")
         try {
             val response: CharactersResponse = client.get<CharactersResponse>(
@@ -24,25 +25,3 @@ class RickAndMortyAPI(private val client: HttpClient) {
         }
     }
 }
-
-@Serializable
-data class CharactersResponse(
-    val info: Info,
-    val results: List<RickAndMortyCharacter>
-)
-
-@Serializable
-data class Info(
-    val count: Int,
-    val pages: Int,
-    val next: String?,
-    val prev: String?
-)
-
-@Serializable
-data class RickAndMortyCharacter(
-    val name: String,
-    val status: String,
-    val species: String,
-    val image: String
-)

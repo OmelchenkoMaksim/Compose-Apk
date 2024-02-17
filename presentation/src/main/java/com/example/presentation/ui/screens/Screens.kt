@@ -7,7 +7,7 @@ import androidx.compose.material.icons.filled.Person
 import androidx.compose.ui.graphics.vector.ImageVector
 
 enum class Screens(val route: String, val label: String, val icon: ImageVector) {
-    ScreenOne("screen_one", "Screen 1", Icons.Filled.Home),
-    ScreenTwo("screen_two", "Screen 2", Icons.Filled.Favorite),
-    ScreenThree("screen_three", "Screen 3", Icons.Filled.Person)
+    ScreenOne("screen_one", "Excel", Icons.Filled.Home),
+    ScreenTwo("screen_two", "List into List", Icons.Filled.Favorite),
+    ScreenThree("screen_three", "R&M", Icons.Filled.Person)
 }

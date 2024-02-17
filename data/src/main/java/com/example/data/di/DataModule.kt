@@ -5,6 +5,9 @@ import android.content.SharedPreferences
 import com.example.data.NetworkStatusHelper
 import com.example.data.RickAndMortyAPI
 import com.example.data.RickAndMortyRepository
+import com.example.domain.INetworkStatusHelper
+import com.example.domain.IRickAndMortyAPI
+import com.example.domain.IRickAndMortyRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -30,7 +33,7 @@ object DataModule {
     }
 
     @Provides
-    fun provideNetworkStatusHelper(@ApplicationContext context: Context): NetworkStatusHelper {
+    fun provideNetworkStatusHelper(@ApplicationContext context: Context): INetworkStatusHelper {
         return NetworkStatusHelper(context)
     }
 
@@ -43,8 +46,8 @@ object DataModule {
             }
             install(JsonFeature) {
                 serializer = KotlinxSerializer(Json {
-                    ignoreUnknownKeys = true // Игнорировать неизвестные ключи
-                    isLenient = true // Более гибкая обработка JSON
+                    ignoreUnknownKeys = true
+                    isLenient = true
                     encodeDefaults = true
                 })
             }
@@ -53,12 +56,13 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideRickAndMortyAPI(client: HttpClient): RickAndMortyAPI {
+    fun provideRickAndMortyAPI(client: HttpClient): IRickAndMortyAPI {
         return RickAndMortyAPI(client)
     }
 
     @Provides
-    fun provideRickAndMortyRepository(api: RickAndMortyAPI): RickAndMortyRepository {
+    @Singleton
+    fun provideRickAndMortyRepository(api: IRickAndMortyAPI): IRickAndMortyRepository {
         return RickAndMortyRepository(api)
     }
 }

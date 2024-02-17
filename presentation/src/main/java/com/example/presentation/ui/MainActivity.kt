@@ -6,9 +6,10 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
+import androidx.compose.material.SnackbarDuration
 import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -16,8 +17,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.rememberNavController
-import com.example.presentation.ui.navigation.BottomNavBar
-import com.example.presentation.ui.navigation.NavGraph
+import com.example.presentation.navigation.BottomNavBar
+import com.example.presentation.navigation.NavGraph
 import com.example.presentation.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -42,7 +43,8 @@ fun AppContent() {
     LaunchedEffect(showSnackbar) {
         if (showSnackbar) {
             scaffoldState.snackbarHostState.showSnackbar(
-                message = "Lost internet connection"
+                message = "Lost internet connection",
+                duration = SnackbarDuration.Long,
             )
         }
     }

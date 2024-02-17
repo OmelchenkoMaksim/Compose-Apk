@@ -1,4 +1,4 @@
-package com.example.presentation.ui.navigation
+package com.example.presentation.navigation
 
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
