@@ -6,7 +6,6 @@ pluginManagement {
     }
 }
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
         google()
         mavenCentral()
@@ -15,3 +14,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "Compose Application"
 include(":app")
+include(":domain")
+include(":presentation")
+include(":data")
