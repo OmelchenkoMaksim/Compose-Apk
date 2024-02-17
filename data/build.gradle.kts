@@ -3,6 +3,7 @@ plugins {
     kotlin("android")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -31,17 +32,10 @@ dependencies {
     // Добавляем зависимость от модуля domain
     implementation(project(":domain"))
 
-    // Room
-    implementation("androidx.room:room-runtime:2.6.1")
-    // Для использования Kotlin coroutines с Room
-    implementation("androidx.room:room-ktx:2.6.1")
+    implementation("io.ktor:ktor-client-android:1.6.7")
+    implementation("io.ktor:ktor-client-serialization-jvm:1.6.7")
+    implementation("io.ktor:ktor-client-logging-jvm:1.6.7")
 
-    // Retrofit
-    implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.squareup.okhttp3:okhttp:4.10.0")
-    implementation("com.squareup.okhttp3:logging-interceptor:4.10.0")
-
-    implementation ("com.google.dagger:hilt-android:2.50")
+    implementation("com.google.dagger:hilt-android:2.50")
     ksp("com.google.dagger:hilt-compiler:2.50")
 }

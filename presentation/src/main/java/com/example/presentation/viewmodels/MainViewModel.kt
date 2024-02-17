@@ -12,7 +12,7 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(
     private val networkStatusHelper: NetworkStatusHelper
 ) : ViewModel() {
-    // Изменим начальное состояние на false, так как мы хотим, чтобы оно было видимым только когда нет интернета
+
     val showSnackbar: MutableStateFlow<Boolean> = MutableStateFlow(true)
 
     init {
