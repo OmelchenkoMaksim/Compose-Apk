@@ -1,28 +1,13 @@
 package com.example.presentation.ui.ui.screens
 
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import com.example.presentation.ui.ui.components.excel.ExcelLikeGridScreen
-import com.example.presentation.ui.ui.components.nested.NestedListsScreen
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Favorite
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.ui.graphics.vector.ImageVector
 
-@Composable
-fun ScreenOne() {
-    ExcelLikeGridScreen()
-}
-
-@Composable
-fun ScreenTwo() {
-    NestedListsScreen()
-}
-
-@Composable
-fun ScreenThree() {
-    Text(
-        "Экран 3", modifier = Modifier
-            .fillMaxSize()
-            .wrapContentSize()
-    )
+enum class Screens(val route: String, val label: String, val icon: ImageVector) {
+    ScreenOne("screen_one", "Screen 1", Icons.Filled.Home),
+    ScreenTwo("screen_two", "Screen 2", Icons.Filled.Favorite),
+    ScreenThree("screen_three", "Screen 3", Icons.Filled.Person)
 }
