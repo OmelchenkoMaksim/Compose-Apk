@@ -6,6 +6,7 @@ import com.example.domain.INetworkStatusHelper
 import com.example.domain.IRickAndMortyRepository
 import com.example.domain.RickAndMortyCharacter
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -36,7 +37,7 @@ class RickAndMortyScreenViewModel @Inject constructor(
 
     private fun observeNetworkStatus() {
         viewModelScope.launch {
-            networkStatusHelper.observeNetworkStatus().collect { isAvailable ->
+            (networkStatusHelper.observeNetworkStatus() as Flow<Boolean>).collect { isAvailable ->
                 if (isAvailable && _characters.value.isEmpty()) {
                     loadNextPage()
                 }
