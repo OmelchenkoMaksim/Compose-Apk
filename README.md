@@ -45,7 +45,7 @@ The project adheres to Clean Architecture principles, organized into the followi
 
 - **Unit Testing with JUnit 4**: The data layer includes unit tests to ensure the reliability and correctness of data operations.
 
-- **Kotlin DSL (build.gradle.kts)**: All build configuration files are written in Kotlin DSL, enhancing readability and maintainability of
+- **Kotlin DSL (.kts)**: All build configuration files are written in Kotlin DSL, enhancing readability and maintainability of
   build scripts.
 
 - **Hilt and KSP**: Used for dependency injection and Kotlin Symbol Processing,
