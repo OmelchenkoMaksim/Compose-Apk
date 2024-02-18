@@ -28,7 +28,6 @@ android {
 }
 
 dependencies {
-    // Добавляем зависимость от модуля domain
     implementation(project(":domain"))
 
     implementation("io.ktor:ktor-client-android:1.6.7")

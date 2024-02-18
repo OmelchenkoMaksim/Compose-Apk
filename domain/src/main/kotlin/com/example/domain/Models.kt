@@ -23,4 +23,3 @@ data class RickAndMortyCharacter(
     val species: String,
     val image: String?
 )
-

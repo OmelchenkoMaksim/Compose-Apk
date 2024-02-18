@@ -28,10 +28,10 @@ android {
 }
 
 dependencies {
+    implementation(project(":domain"))
+    implementation(project(":data"))
+    implementation(project(":presentation"))
+
     implementation ("com.google.dagger:hilt-android:2.50")
     ksp("com.google.dagger:hilt-compiler:2.50")
-
-    implementation(project(":presentation"))
-    implementation(project(":data"))
-    implementation(project(":domain"))
 }
