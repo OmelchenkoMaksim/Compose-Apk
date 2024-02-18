@@ -15,10 +15,10 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import io.ktor.client.HttpClient
 import io.ktor.client.engine.android.Android
-import io.ktor.client.features.json.JsonFeature
-import io.ktor.client.features.json.serializer.KotlinxSerializer
-import io.ktor.client.features.logging.LogLevel
-import io.ktor.client.features.logging.Logging
+import io.ktor.client.plugins.contentnegotiation.*
+import io.ktor.client.plugins.logging.LogLevel
+import io.ktor.client.plugins.logging.Logging
+import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import javax.inject.Singleton
 
@@ -44,8 +44,8 @@ object DataModule {
             install(Logging) {
                 level = LogLevel.BODY
             }
-            install(JsonFeature) {
-                serializer = KotlinxSerializer(Json {
+            install(ContentNegotiation) {
+                json(Json {
                     ignoreUnknownKeys = true
                     isLenient = true
                     encodeDefaults = true
@@ -53,6 +53,7 @@ object DataModule {
             }
         }
     }
+
 
     @Provides
     @Singleton

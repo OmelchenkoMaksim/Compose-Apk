@@ -4,5 +4,5 @@ plugins {
 }
 
 dependencies {
-    implementation("io.ktor:ktor-client-serialization-jvm:1.6.7")
+    implementation("io.ktor:ktor-client-serialization-jvm:2.3.8")
 }

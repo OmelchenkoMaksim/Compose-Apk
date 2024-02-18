@@ -38,10 +38,10 @@ dependencies {
     implementation(project(":domain"))
     implementation(project(":data"))
 
-    implementation(platform("androidx.compose:compose-bom:2024.01.00"))
+    implementation(platform("androidx.compose:compose-bom:2024.02.00"))
     implementation("androidx.compose.material:material:1.6.1")
     implementation("androidx.compose.ui:ui-tooling-preview:1.6.1")
-    implementation("io.coil-kt:coil-compose:2.4.0")
+    implementation("io.coil-kt:coil-compose:2.5.0")
 
     implementation("androidx.hilt:hilt-navigation-compose:1.1.0")
     implementation("com.google.dagger:hilt-android:2.50")
